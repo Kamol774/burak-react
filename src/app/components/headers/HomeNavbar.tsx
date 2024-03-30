@@ -7,8 +7,7 @@ export default function HomeNavbar() {
 
   return <div className="home-navbar">
     <Container className="navbar-container">
-      <Stack
-        className="menu">
+      <Stack className="menu">
         <Box>
           <NavLink to="/">
             <img
