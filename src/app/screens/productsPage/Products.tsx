@@ -1,237 +1,166 @@
-import * as React from 'react';
-import { Box, Button, Container, InputBase, Stack } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
-import RemoveredEyeIcon from "@mui/icons-material/RemoveRedEye";
-import Badge from "@mui/material/Badge";
-import Pagination from "@mui/material/Pagination";
-import PaginationItem from "@mui/material/PaginationItem";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import "../../../css/products.css"
-import AspectRatio from '@mui/joy/AspectRatio';
-import Card from '@mui/joy/Card';
-import CardCover from '@mui/joy/CardCover';
-import IconButton from '@mui/joy/IconButton';
-import Typography from '@mui/joy/Typography';
-import { CardOverflow, CssVarsProvider } from '@mui/joy';
-
-
-const products = [
-  { productName: "Cutlet", imagePath: "/img/cutlet.webp" },
-  { productName: "Kebab", imagePath: "/img/kebab-fresh.webp" },
-  { productName: "Kebab", imagePath: "/img/kebab.webp" },
-  { productName: "Lavash", imagePath: "/img/lavash.webp" },
-  { productName: "Lavash", imagePath: "/img/lavash.webp" },
-  { productName: "Cutlet", imagePath: "/img/cutlet.webp" },
-  { productName: "Kebab", imagePath: "/img/kebab-fresh.webp" },
-  { productName: "Kebab", imagePath: "/img/kebab.webp" },
-];
+import {
+  ArrowBack,
+  ArrowForward,
+  Search,
+  MonetizationOn,
+  RemoveRedEye,
+} from '@mui/icons-material';
+import {
+  Box,
+  Button,
+  Container,
+  Pagination,
+  PaginationItem,
+  Stack,
+  Badge,
+  InputBase,
+  IconButton,
+} from '@mui/material';
+import { Link } from 'react-router-dom';
 
 export default function Products() {
+  const products = [
+    { productName: 'Cutlet', imagePath: '/img/cutlet.webp' },
+    { productName: 'Kebab', imagePath: '/img/kebab-fresh.webp' },
+    { productName: 'Kebab', imagePath: '/img/kebab.webp' },
+    { productName: 'Lavash', imagePath: '/img/lavash.webp' },
+    { productName: 'Lavash', imagePath: '/img/lavash.webp' },
+    { productName: 'Cutlet', imagePath: '/img/cutlet.webp' },
+    { productName: 'Kebab', imagePath: '/img/kebab.webp' },
+    { productName: 'Kebab', imagePath: '/img/kebab-fresh.webp' },
+  ];
+
   return (
-    <div className={"products"}>
+    <div className="products">
       <Container>
-        <Stack >
-          <Stack className={"avatar-big-box"}>
-            <Box className={"restaurant-title"}>Burak Restaurant</Box>
-            <Stack className={"search-box"}
-              component="form"
-              sx={{ alignItems: 'end', width: 400 }}
-            >
-              <InputBase className="InputBase"
-                sx={{ mr: 15, flex: 1 }}
+        <Stack flexDirection={'column'} alignItems={'center'}>
+          <Stack className="avatar-big-box">
+            <Stack className="title">Burak Restaurant</Stack>
+            <Stack className="input-wrapper">
+              <InputBase
+                className="text-field"
                 placeholder="Type here"
+                inputProps={{ 'aria-label': 'Type here' }}
               />
-              <Button
-                variant={"contained"}
-                color={"primary"}
-                className={"order search-button"}
+              <IconButton
+                type="button"
+                className="icon-btn"
+                aria-label="search"
               >
-                SEARCH<SearchIcon sx={{ fontSize: "medium" }} />
-              </Button>
+                search
+                <Search sx={{ width: '18px', height: '18px' }} />
+              </IconButton>
             </Stack>
           </Stack>
-          <Stack className={"dishes-filter-section"}>
-            <Stack className={"dishes-filter-box"}>
-              <Button
-                variant={"contained"}
-                color={"primary"}
-                className={"order"}
-              >
+
+          <Stack className="dishes-filter-section">
+            <Stack className="dishes-filter-box">
+              <Button variant="contained" color="primary" className="order">
                 New
               </Button>
-              <Button
-                variant={"contained"}
-                color={"secondary"}
-                className={"order"}
-              >
+              <Button variant="contained" color="secondary" className="order">
                 Price
               </Button>
-              <Button
-                variant={"contained"}
-                color={"secondary"}
-                className={"order"}
-              >
+              <Button variant="contained" color="secondary" className="order">
                 Views
               </Button>
             </Stack>
           </Stack>
-          <Stack className={"list-category-section"}>
-            <Stack className={"product-category"}>
-              <Button
-                variant={"contained"}
-                color={"secondary"}
-                className={"order"}
-              >
-                OTHER
+
+          <Stack className="list-category-section">
+            <Stack className="product-category">
+              <Button variant="contained" color="primary" className="order">
+                dish
               </Button>
-              <Button
-                variant={"contained"}
-                color={"secondary"}
-                className={"order"}
-              >
-                DESERT
+              <Button variant="contained" color="secondary" className="order">
+                salad
               </Button>
-              <Button
-                variant={"contained"}
-                color={"secondary"}
-                className={"order"}
-              >
-                DRINK
+              <Button variant="contained" color="secondary" className="order">
+                drink
               </Button>
-              <Button
-                variant={"contained"}
-                color={"secondary"}
-                className={"order"}
-              >
-                SALAD
+              <Button variant="contained" color="secondary" className="order">
+                desert
               </Button>
-              <Button
-                variant={"contained"}
-                color={"primary"}
-                className={"order"}
-              >
-                DISH
+              <Button variant="contained" color="secondary" className="order">
+                other
               </Button>
             </Stack>
-
-            <Stack className={"product-wrapper"}>
-              <CssVarsProvider>
-
-                {products.length !== 0 ? (
-                  products.map((product, index) => {
-                    return (
-                      <Card
-                        className="cards-frame"
-                        variant="plain"
-                        sx={{
-                          width: "305px",
-                          bgcolor: 'initial',
-                        }}
+            <Stack className="product-wrapper">
+              {products.length !== 0 ? (
+                products.map((product, index) => {
+                  return (
+                    <Stack key={index} className="product-card">
+                      <Stack
+                        className="product-img"
+                        sx={{ backgroundImage: `url(${product.imagePath})` }}
                       >
-                        <Box sx={{ position: 'relative' }}>
-                          <CardOverflow>
-                            <div className="product-sale">Normal Size</div>
-                            <AspectRatio ratio="1">
-                              <img className={"img-box"} src={product.imagePath} alt="" />
-                            </AspectRatio>
-                          </CardOverflow>
-                          <CardCover
-                            className="gradient-cover"
-                            sx={{
-                              '&:hover, &:focus-within': {
-                                opacity: 1,
-                              },
-                              opacity: 0,
-                              transition: '0.1s ease-in',
-                              background:
-                                'linear-gradient(180deg, transparent 62%, rgba(0,0,0,0.00345888) 63.94%, rgba(0,0,0,0.014204) 65.89%, rgba(0,0,0,0.0326639) 67.83%, rgba(0,0,0,0.0589645) 69.78%, rgba(0,0,0,0.0927099) 71.72%, rgba(0,0,0,0.132754) 73.67%, rgba(0,0,0,0.177076) 75.61%, rgba(0,0,0,0.222924) 77.56%, rgba(0,0,0,0.267246) 79.5%, rgba(0,0,0,0.30729) 81.44%, rgba(0,0,0,0.341035) 83.39%, rgba(0,0,0,0.367336) 85.33%, rgba(0,0,0,0.385796) 87.28%, rgba(0,0,0,0.396541) 89.22%, rgba(0,0,0,0.4) 91.17%)',
-                            }}
-                          >
-                            {/* The first box acts as a container that inherits style from the CardCover */}
-                            <div>
-                              <Box
-                                sx={{
-                                  p: 2,
-                                  display: 'flex',
-                                  alignItems: 'center',
-                                  ml: "33%",
-                                  gap: 3,
-                                  flexGrow: 1,
-                                  alignSelf: 'flex-end',
-                                }}
-                              >
-                                <IconButton
-                                  className='shop-btn'
-                                  variant="solid"
-                                >
-                                  <img src={'/icons/shopping-cart.svg'}
-                                    style={{ display: "flex" }} />
-                                </IconButton>
-                                <IconButton
-                                  size="sm"
-                                  variant="solid"
-                                  color="neutral"
-                                  sx={{ bgcolor: 'rgba(0 0 0 / 0.2)' }}
-                                >
-                                  {/* <Badge badgeContent={20} color='secondary'> */}
-                                  <RemoveredEyeIcon
-                                    sx={{ color: 20 ? "gray" : "white" }} />
-                                  {/* </Badge> */}
-                                </IconButton>
-                              </Box>
-                            </div>
-                          </CardCover>
-                        </Box>
-                        <Box sx={{ display: 'flex', justifyContent: "center", alignItems: 'center' }}>
-                          <Typography sx={{ fontSize: '20px', fontWeight: 600 }}>
-                            {product.productName}
-                          </Typography>
-                        </Box>
-                        <Box className="price" sx={{ display: 'flex', justifyContent: "center", alignItems: 'center' }}>
-                          <MonetizationOnIcon />{15}
-                        </Box>
-                      </Card>
-                    );
-                  })) : (
-                  <Box className="no-data">Products are not available!</Box>
-                )
-                }
-              </CssVarsProvider>
-
-              <Stack className={"pagination-section"}>
-                <Pagination
-                  count={3}
-                  page={1}
-                  renderItem={(item) => (
-                    <PaginationItem
-                      components={{
-                        previous: ArrowBackIcon,
-                        next: ArrowForwardIcon,
-                      }}
-                      {...item}
-                      color={'secondary'}
-                    />
-                  )}
-                />
-              </Stack>
+                        <div className="product-sale">Normal Size</div>
+                        <Button className="shop-btn">
+                          <img
+                            src="/icons/shopping-cart.svg"
+                            style={{ display: 'flex' }}
+                          />
+                        </Button>
+                        <Button className="view-btn" sx={{ right: '36px' }}>
+                          <Badge badgeContent={20} color="secondary">
+                            <RemoveRedEye
+                              sx={{ color: 20 ? 'gray' : 'white' }}
+                            />
+                          </Badge>
+                        </Button>
+                      </Stack>
+                      <Box className="product-desc">
+                        <span className="product-title">
+                          {product.productName}
+                        </span>
+                        <div className="product-desc">
+                          <MonetizationOn />
+                          {12}
+                        </div>
+                      </Box>
+                    </Stack>
+                  );
+                })
+              ) : (
+                <Box>No data</Box>
+              )}
             </Stack>
+          </Stack>
+
+          <Stack className="pagination-section">
+            <Pagination
+              count={3}
+              page={1}
+              renderItem={(item) => (
+                <PaginationItem
+                  components={{ previous: ArrowBack, next: ArrowForward }}
+                  {...item}
+                  color="secondary"
+                />
+              )}
+            />
           </Stack>
         </Stack>
       </Container>
 
-      <div className={"brands-logo"}>
-        <Container>
-          <Stack className='brand-title'>Our Family Brands</Stack>
-          <Stack className='brand-list'>
-            <Box className="brand"><img src={'/img/gurme.webp'} /></Box>
-            <Box className="brand"><img src={'/img/seafood.webp'} /></Box>
-            <Box className="brand"><img src={'/img/sweets.webp'} /></Box>
-            <Box className="brand"><img src={'/img/doner.webp'} /></Box>
+      <div className="brands-logo">
+        <Stack className="brand-title">Our family brands</Stack>
+        <Stack className="image-container">
+          <Stack className="image-wrapper">
+            <img src="/img/gurme.webp" />
           </Stack>
-        </Container>
+          <Stack className="image-wrapper">
+            <img src="/img/seafood.webp" />
+          </Stack>
+          <Stack className="image-wrapper">
+            <img src="/img/sweets.webp" />
+          </Stack>
+          <Stack className="image-wrapper">
+            <img src="/img/doner.webp" />
+          </Stack>
+        </Stack>
       </div>
+
 
       <div className={"address"}>
         <Container>
