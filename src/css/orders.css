@@ -32,7 +32,7 @@
   width: 49%;
   height: 480px;
   display: flex;
-  background: #ffffff;
+  background: #f6f2ff;
   box-shadow: 9px 13px 14px 5px rgba(0, 0, 0, 0.25),
     inset 0px 0px 19px 9px rgba(0, 0, 0, 0.25);
   border-radius: 16px;
@@ -43,7 +43,7 @@
 .order-page .order-left .order-main-box {
   padding: 30px 40px;
   display: flex;
-  background: #ffffff;
+  background: #f6f2ff;
   box-shadow: -15px 17px 14px 5px rgba(0, 0, 0, 0.25),
     inset 0px 0px 19px 9px rgba(0, 0, 0, 0.25);
   border-radius: 16px;
@@ -150,7 +150,7 @@ Button {
   padding: 30px 40px;
   height: 310px;
   display: flex;
-  background: #ffffff;
+  background: #f6f2ff;
   box-shadow: 9px 13px 14px 5px rgba(0, 0, 0, 0.25),
     inset 0px 0px 19px 9px rgba(0, 0, 0, 0.25);
   border-radius: 16px;
@@ -227,7 +227,7 @@ Button {
   padding: 30px 40px;
   height: 260px;
   display: flex;
-  background: #ffffff;
+  background: #f6f2ff;
   box-shadow: 9px 13px 14px 5px rgba(0, 0, 0, 0.25),
     inset 0px 0px 19px 9px rgba(0, 0, 0, 0.25);
   border-radius: 16px;
