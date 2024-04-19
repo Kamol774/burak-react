@@ -13,12 +13,12 @@ import './css/index.css';
 const container = document.getElementById('root')!;
 const root = createRoot(container);
 
-root.render(  // 2ta argument: 1-react, 2-reactDOM instance 
+root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
+    <Provider store={store}> {/* redux storage */}
+      <ThemeProvider theme={theme}> {/* material UI */}
         < CssBaseline />
-        <Router>
+        <Router> {/* react routerDOM */}
           < App />
         </Router>
       </ThemeProvider>

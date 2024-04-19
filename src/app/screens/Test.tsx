@@ -29,7 +29,7 @@ class Test extends React.Component {
   componentDidUpdate() {
     console.log("componentDidUpdate");
   }
-  // runst 
+  // runs  
 
   render() {
     return (
