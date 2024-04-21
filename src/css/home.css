@@ -185,8 +185,9 @@
 }
 
 .homepage .new-products-frame .product-detail .title {
-  width: 65px;
+  width: auto;
   font-weight: 500;
+  padding-right: 10px;
 }
 
 .homepage .new-products-frame .product-detail .price {
