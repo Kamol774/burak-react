@@ -26,6 +26,9 @@ export default function HomePage() {
   const { popularDishes } = useSelector(PopularDishesRetriever);
   // Selector: Store dan => Data ni qabul qilib olish
 
+
+  console.log(process.env.REACT_APP_API_URL);
+
   useEffect(() => {
     // Backend server data request => Data
 
