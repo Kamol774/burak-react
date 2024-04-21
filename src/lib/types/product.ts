@@ -12,7 +12,7 @@ export interface Product {
   productVolume: number;
   productDesc?: string;
   productImages: string[];
-  productViews: number;
+  productView: number;
   createdAt: Date;
   updatedAt: Date;
 }
