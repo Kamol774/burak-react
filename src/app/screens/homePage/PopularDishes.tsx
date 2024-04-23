@@ -34,7 +34,7 @@ export default function PopularDishes() {
               (popularDishes.map((ele: Product) => {
                 const imagePath = `${serverApi}/${ele.productImages[0]}`;
                 return (
-                  // CssVarsProvider --> bu mui/joy ni ishlatishimiz uchun
+                  // CssVarsProvider --> bu Mui/joy ni ishlatishimiz uchun
                   <CssVarsProvider key={ele._id}>
                     <Card className={"card"}>
                       <CardCover>

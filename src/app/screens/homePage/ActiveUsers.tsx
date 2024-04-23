@@ -4,13 +4,21 @@ import { CssVarsProvider, Typography } from "@mui/joy";
 import CardOverflow from "@mui/joy/CardOverflow";
 import AspectRatio from "@mui/joy/AspectRatio";
 
-const activeUsers = [
-  { memberNick: "Martin", memberImage: "/img/martin.webp" },
-  { memberNick: "Justin", memberImage: "/img/justin.webp" },
-  { memberNick: "Rose", memberImage: "/img/rose.webp" },
-  { memberNick: "Nusret", memberImage: "/img/nusret.webp" },
-];
+import { useSelector } from "react-redux";
+import { createSelector } from "reselect";
+import { retrieveTopUsers } from "./selector";
+import { serverApi } from "../../../lib/config";
+import { Member } from "../../../lib/types/member";
+
+
+/** REDUX SLICE & SELECTOR **/
+const TopUsersRetriever = createSelector(retrieveTopUsers, (topUsers) => ({ topUsers })
+);
+
+
 export default function ActiveUsers() {
+  const { topUsers } = useSelector(TopUsersRetriever); // Selector: Store dan => Data ni qabul qilib olish
+
   return (
     <div className="active-users-frame">
       <Container>
@@ -18,13 +26,14 @@ export default function ActiveUsers() {
           <Box className={"category-title"}>Active Users</Box>
           <Stack className={"cards-frame"}>
             <CssVarsProvider>
-              {activeUsers.length !== 0 ? (
-                activeUsers.map((ele, index) => {
+              {topUsers.length !== 0 ? (
+                topUsers.map((ele: Member) => {
+                  const imagePath = `${serverApi}/${ele.memberImage}`;
                   return (
-                    <Card key={index} variant="outlined" className={"card"}>
+                    <Card key={ele._id} variant="outlined" className={"card"}>
                       <CardOverflow>
                         <AspectRatio ratio="1">
-                          <img src={ele.memberImage} alt="" />
+                          <img src={imagePath} alt="" />
                         </AspectRatio>
                       </CardOverflow>
                       <CardOverflow>
