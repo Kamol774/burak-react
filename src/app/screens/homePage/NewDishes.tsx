@@ -33,7 +33,7 @@ export default function NewDishes() {
               {newDishes.length !== 0 ? (
                 newDishes.map((ele: Product) => {
                   const imagePath = `${serverApi}/${ele.productImages[0]}`;
-                  const sizeVolume = ele.productCollection === ProductCollection.DRINK ? ele.productVolume + " l" : ele.productSize + "size";
+                  const sizeVolume = ele.productCollection === ProductCollection.DRINK ? ele.productVolume + " litre" : ele.productSize + "size";
                   return (
                     <Card key={ele._id} variant="outlined" className={"card"}>
                       <CardOverflow>
@@ -53,7 +53,7 @@ export default function NewDishes() {
                           </Stack>
                           <Stack>
                             <Typography className={"views"}>
-                              {ele.productView}
+                              {ele.productViews}
                               <VisibilityIcon
                                 sx={{ fontSize: 20, marginLeft: "5px" }}
                               />

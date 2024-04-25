@@ -11,7 +11,7 @@ export default function OtherNavbar() {
           <NavLink to="/">
             <img
               className="brand-logo"
-              src="icons/burak.svg"
+              src="/icons/burak.svg"
             />
           </NavLink>
         </Box>

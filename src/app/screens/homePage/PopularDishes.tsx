@@ -57,7 +57,7 @@ export default function PopularDishes() {
                             display: "flex"
                           }}
                           >
-                            {ele.productView} <VisibilityIcon sx={{ fontSize: 25, marginLeft: "5px" }} />
+                            {ele.productViews} <VisibilityIcon sx={{ fontSize: 25, marginLeft: "5px" }} />
                           </Typography>
                         </Stack>
                       </CardContent>
