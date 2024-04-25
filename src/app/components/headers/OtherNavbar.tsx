@@ -6,8 +6,7 @@ export default function OtherNavbar() {
   const authMember = true;
   return <div className="home-navbar">
     <Container className="navbar-container">
-      <Stack
-        className="menu">
+      <Stack className="menu">
         <Box>
           <NavLink to="/">
             <img

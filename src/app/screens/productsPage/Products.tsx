@@ -16,20 +16,35 @@ import {
   InputBase,
   IconButton,
 } from '@mui/material';
+import { Dispatch, createSelector } from '@reduxjs/toolkit';
 import { Link } from 'react-router-dom';
+import { setChosenProduct, setProducts, setRestaurant } from './slice';
+import { useDispatch } from 'react-redux';
+import { Product } from '../../../lib/types/product';
+import { retrieveProducts } from './selector';
+
+/** REDUX SLICE & SELECTOR **/
+const actionDispatch = (dispatch: Dispatch) => ({
+  setProducts: (data: Product[]) => dispatch(setProducts(data))
+});
+const ProductsRetriever = createSelector(retrieveProducts, (products) => ({ products })
+);
+
+
+const products = [
+  { productName: 'Cutlet', imagePath: '/img/cutlet.webp' },
+  { productName: 'Kebab', imagePath: '/img/kebab-fresh.webp' },
+  { productName: 'Kebab', imagePath: '/img/kebab.webp' },
+  { productName: 'Lavash', imagePath: '/img/lavash.webp' },
+  { productName: 'Lavash', imagePath: '/img/lavash.webp' },
+  { productName: 'Cutlet', imagePath: '/img/cutlet.webp' },
+  { productName: 'Kebab', imagePath: '/img/kebab.webp' },
+  { productName: 'Kebab', imagePath: '/img/kebab-fresh.webp' },
+];
+
 
 export default function Products() {
-  const products = [
-    { productName: 'Cutlet', imagePath: '/img/cutlet.webp' },
-    { productName: 'Kebab', imagePath: '/img/kebab-fresh.webp' },
-    { productName: 'Kebab', imagePath: '/img/kebab.webp' },
-    { productName: 'Lavash', imagePath: '/img/lavash.webp' },
-    { productName: 'Lavash', imagePath: '/img/lavash.webp' },
-    { productName: 'Cutlet', imagePath: '/img/cutlet.webp' },
-    { productName: 'Kebab', imagePath: '/img/kebab.webp' },
-    { productName: 'Kebab', imagePath: '/img/kebab-fresh.webp' },
-  ];
-
+  const { setProducts } = actionDispatch(useDispatch());
   return (
     <div className="products">
       <Container>

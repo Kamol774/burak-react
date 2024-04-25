@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { HomePageState } from '../../../lib/types/screen'
+import { createSlice } from '@reduxjs/toolkit';
+import { HomePageState } from '../../../lib/types/screen';
 
 const initialState: HomePageState = {
   popularDishes: [],
@@ -10,7 +10,7 @@ const initialState: HomePageState = {
 const homePageSlice = createSlice({
   name: "homePage",
   initialState,
-  reducers: {
+  reducers: { //reducer orqali initial qiymatlarni o'zgartiramiz
     setPopularDishes: (state, action) => {
       state.popularDishes = action.payload;
     },
