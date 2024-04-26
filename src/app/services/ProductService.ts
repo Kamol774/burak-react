@@ -21,10 +21,24 @@ class ProductService {
 
       return result.data;
     } catch (err) {
+      console.log("error, getProducts:", err);
+      throw err;
+    }
+  };
+
+  public async getProduct(productId: string): Promise<Product> {
+    try {
+      const url = `${this.path}/product/${productId}`;
+      const result = await axios.get(url, { withCredentials: true }); //withCredentials: true => server kim murojat qiletkanligi haqida malumot olsin degan mantiq
+      console.log("getProduct:", result);
+
+      return result.data;
+    } catch (err) {
       console.log("error, getProduct:", err);
       throw err;
     }
   }
+
 
 }
 
