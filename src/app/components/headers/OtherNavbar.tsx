@@ -5,10 +5,14 @@ import { CartItem } from "../../../lib/types/search";
 
 interface OtherNavbarProps { //props ni parent dan olib kelish uchun mantiq
   cartItems: CartItem[];
+  onAdd: (item: CartItem) => void;
+  onRemove: (item: CartItem) => void;
+  onDelete: (item: CartItem) => void;
+  onDeleteAll: () => void;
 }
 
 export default function OtherNavbar(props: OtherNavbarProps) {
-  const { cartItems } = props; //destruction: props ichidan onAdd ni olishni talab qilamiz
+  const { cartItems, onAdd, onRemove, onDelete, onDeleteAll } = props; //destruction: props ichidan onAdd ni olishni talab qilamiz
   const authMember = true;
   return <div className="home-navbar">
     <Container className="navbar-container">
@@ -38,7 +42,12 @@ export default function OtherNavbar(props: OtherNavbarProps) {
           <Box className={"hover-line"}>
             <NavLink to="/help" activeClassName={"underline"}>Help</NavLink>
           </Box>
-          <Basket cartItems={cartItems} />
+          <Basket
+            cartItems={cartItems}
+            onAdd={onAdd}
+            onRemove={onRemove}
+            onDelete={onDelete}
+            onDeleteAll={onDeleteAll} />
           {!authMember ? (
             <Box>
               <Button
