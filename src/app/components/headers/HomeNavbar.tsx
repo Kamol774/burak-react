@@ -10,31 +10,14 @@ interface HomeNavbarProps { //props ni parent dan olib kelish uchun mantiq
   onRemove: (item: CartItem) => void;
   onDelete: (item: CartItem) => void;
   onDeleteAll: () => void;
+  setSignupOpen: (isOpen: boolean) => void;
+  setLoginOpen: (isOpen: boolean) => void;
 }
 
 export default function HomeNavbar(props: HomeNavbarProps) {
-  const { cartItems, onAdd, onRemove, onDelete, onDeleteAll } = props; //destruction: props ichidan onAdd ni olishni talab qilamiz
+  const { cartItems, onAdd, onRemove, onDelete, onDeleteAll, setSignupOpen, setLoginOpen } = props; //destruction: props ichidan onAdd ni olishni talab qilamiz
   const authMember = null;
 
-  const [count, setCount] = useState<number>(0);
-  const [value, setValue] = useState<boolean>(true);
-
-  useEffect(
-    () => {
-      console.log("componentDidMount"); // DATA FETCH
-      setCount(count + 1);
-
-      return () => {
-        console.log("componentWillUnmount");
-      }
-    }, [value])//componentDidUpdate <==> useEffect 2ta argument oladi => callback va array dependency 
-  // array dependency da o'zgarish bo'lgandagina componentDidMount ishga tushadi
-
-  /** HANDLERS **/
-
-  const buttonHandler = () => {
-    setValue(!value);
-  };
 
   return <div className="home-navbar">
     <Container className="navbar-container">
@@ -73,7 +56,7 @@ export default function HomeNavbar(props: HomeNavbarProps) {
           {!authMember ? (
             <Box>
               <Button
-                variant="contained" className="login-button"
+                variant="contained" className="login-button" onClick={() => setLoginOpen(true)}
               >
                 Login
               </Button>
@@ -91,12 +74,12 @@ export default function HomeNavbar(props: HomeNavbarProps) {
         <Stack className={"detail"}>
           <Box className={"head-main-txt"}>World's Most Delicious Cousine</Box>
           <Box className={"wel-txt"}>The Choice, not just a choice</Box>
-          <Box className={"service-txt"}>{count} hours service</Box>
+          <Box className={"service-txt"}>24 hours service</Box>
           <Box className={"signup"}>{!authMember ? (
             <Button
               variant={"contained"}
               className={"signup-button"}
-              onClick={buttonHandler}>
+              onClick={() => setSignupOpen(true)}>
               SIGN UP</Button>
           ) : null}</Box>
         </Stack>

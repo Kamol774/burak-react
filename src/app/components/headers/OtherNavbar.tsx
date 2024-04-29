@@ -9,11 +9,13 @@ interface OtherNavbarProps { //props ni parent dan olib kelish uchun mantiq
   onRemove: (item: CartItem) => void;
   onDelete: (item: CartItem) => void;
   onDeleteAll: () => void;
+  setSignupOpen: (isOpen: boolean) => void;
+  setLoginOpen: (isOpen: boolean) => void;
 }
 
 export default function OtherNavbar(props: OtherNavbarProps) {
-  const { cartItems, onAdd, onRemove, onDelete, onDeleteAll } = props; //destruction: props ichidan onAdd ni olishni talab qilamiz
-  const authMember = true;
+  const { cartItems, onAdd, onRemove, onDelete, onDeleteAll, setSignupOpen, setLoginOpen } = props; //destruction: props ichidan onAdd ni olishni talab qilamiz
+  const authMember = null;
   return <div className="home-navbar">
     <Container className="navbar-container">
       <Stack className="menu">
@@ -51,7 +53,7 @@ export default function OtherNavbar(props: OtherNavbarProps) {
           {!authMember ? (
             <Box>
               <Button
-                variant="contained" className="login-button"
+                variant="contained" className="login-button" onClick={() => setLoginOpen(true)}
               >
                 Login
               </Button>
