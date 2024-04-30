@@ -55,7 +55,7 @@ export default function Products(props: ProductsProps) {
   useEffect(() => {
     const product = new ProductService();
     product
-      .getProducts(productSearch)
+      .getProducts(productSearch) // (productSearch ==> argument)
       .then((data) => { setProducts(data) })
       .catch((err) => { console.log(err) })
   }, [productSearch]);

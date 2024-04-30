@@ -11,7 +11,7 @@ const homePageSlice = createSlice({
   name: "homePage",
   initialState,
   reducers: { //reducer orqali initial qiymatlarni o'zgartiramiz
-    setPopularDishes: (state, action) => {
+    setPopularDishes: (state, action) => { //(state, action ==> parametr)
       state.popularDishes = action.payload;
     },
     setNewDishes: (state, action) => {
