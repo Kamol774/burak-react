@@ -15,6 +15,7 @@ import { setFinishedOrders, setPausedOrders, setProcessOrders } from "./slice";
 import { Order, OrderInquiry } from "../../../lib/types/order";
 import { OrderStatus } from "../../../lib/enum/order.enum";
 import OrderService from "../../services/OrderService";
+import { useGlobals } from "../../hooks/useGlobals";
 
 
 /** REDUX SLICE & SELECTOR **/
@@ -26,6 +27,7 @@ const actionDispatch = (dispatch: Dispatch) => ({
 
 export default function OrdersPage() {
   const { setPausedOrders, setProcessOrders, setFinishedOrders } = actionDispatch(useDispatch())
+  const { orderBuilder } = useGlobals();
   const [value, setValue] = useState("1");
   const [orderInquiry, setOrderInquiry] = useState<OrderInquiry>({
     page: 1,
@@ -50,7 +52,7 @@ export default function OrdersPage() {
       .getMyOrders({ ...orderInquiry, orderStatus: OrderStatus.FINISH })
       .then(data => setFinishedOrders(data)) //redux storage ga yuklaymiz
       .catch((err) => console.log(err));
-  }, [orderInquiry]);
+  }, [orderInquiry, orderBuilder]);
 
   /* HANDLERS */
   const handleChange = (e: SyntheticEvent, newValue: string) => {
@@ -77,8 +79,8 @@ export default function OrdersPage() {
               </Box>
             </Box>
             <Stack className={"order-main-content"}>
-              <PausedOrders />
-              <ProcessOrders />
+              <PausedOrders setValue={setValue} />
+              <ProcessOrders setValue={setValue} />
               <FinishedOrders />
             </Stack>
           </TabContext>

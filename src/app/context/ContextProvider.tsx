@@ -10,8 +10,9 @@ const ContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [authMember, setAuthMember] = useState<Member | null>(
     localStorage.getItem("memeberData") ? JSON.parse(localStorage.getItem("memberData") as string) : null  //agar cookies mavjud bo'lsa storage dan memberData ni olib string ga parse qiladi 
   );
+  const [orderBuilder, setOrderBuilder] = useState<Date>(new Date())
   console.log("==== verify ====")
-  return (<GlobalContext.Provider value={{ authMember, setAuthMember }}>{children}</GlobalContext.Provider>)
+  return (<GlobalContext.Provider value={{ authMember, setAuthMember, orderBuilder, setOrderBuilder }}>{children}</GlobalContext.Provider>)
 };
 
 export default ContextProvider; //buni ixtiyoriy joyda ishlatish uchun Redux ichiga wrap qilyapmiz
