@@ -1,6 +1,5 @@
 import { createSelector } from "reselect";
 import { AppRootState } from "../../../lib/types/screen";
-import OrdersPage from ".";
 
 const selectOrdersPage = (state: AppRootState) => state.ordersPage;
 // quyida screen.ts dagi ordersPage interfacelaridan selector yasaymiz 
