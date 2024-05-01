@@ -9,11 +9,9 @@ import { Product } from "../../../lib/types/product";
 import { serverApi } from "../../../lib/config";
 import { Order, OrderItem } from "../../../lib/types/order";
 
-
 /** REDUX SLICE & SELECTOR **/
 const pausedOrdersRetriever = createSelector(retrievePausedOrders, (pausedOrders) => ({ pausedOrders })
 );
-
 
 export default function PausedOrders() {
   const { pausedOrders } = useSelector(pausedOrdersRetriever)
