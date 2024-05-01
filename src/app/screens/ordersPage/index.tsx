@@ -16,6 +16,9 @@ import { Order, OrderInquiry } from "../../../lib/types/order";
 import { OrderStatus } from "../../../lib/enum/order.enum";
 import OrderService from "../../services/OrderService";
 import { useGlobals } from "../../hooks/useGlobals";
+import { useHistory } from "react-router-dom";
+import { serverApi } from "../../../lib/config";
+import { MemberType } from "../../../lib/enum/member.enum";
 
 
 /** REDUX SLICE & SELECTOR **/
@@ -27,7 +30,8 @@ const actionDispatch = (dispatch: Dispatch) => ({
 
 export default function OrdersPage() {
   const { setPausedOrders, setProcessOrders, setFinishedOrders } = actionDispatch(useDispatch())
-  const { orderBuilder } = useGlobals();
+  const { orderBuilder, authMember } = useGlobals();
+  const history = useHistory();
   const [value, setValue] = useState("1");
   const [orderInquiry, setOrderInquiry] = useState<OrderInquiry>({
     page: 1,
@@ -58,6 +62,8 @@ export default function OrdersPage() {
   const handleChange = (e: SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
+
+  if (!authMember) history.push("/");
 
   return (
     <div className={"order-page"}>
@@ -92,21 +98,20 @@ export default function OrdersPage() {
               <Box className={"member-box"}>
                 <div className={"order-user-img"}>
                   <img
-                    src={"/icons/default-user.svg"}
                     className={"order-user-avatar"}
+                    src={authMember?.memberImage ? `${serverApi}/${authMember.memberImage}` : "/icons/default-user.svg"}
                   />
                   <div className={"order-user-icon-box"}>
-                    <img
-                      src={"/icons/user-badge.svg"}
+                    <img src={authMember?.memberType === MemberType.RESTAURANT ? "/icons/restaurant.svg" : "/icons/user-badge.svg"}
                       className={"order-user-prof-img"}
                     />
                   </div>
                 </div>
-                <Box className={"user-title"}>Kevin</Box>
-                <Box className={"user-title-desc"}>User</Box>
+                <Box className={"user-title"}>{authMember?.memberNick}</Box>
+                <Box className={"user-title-desc"}>{authMember?.memberType}</Box>
               </Box>
               <Box className={"just-line"}></Box>
-              <Box className={"location"}><LocationOn />South Korea, Busan</Box>
+              <Box className={"location"}><LocationOn />{authMember?.memberAddress ? authMember?.memberAddress : "Do not exist"}</Box>
             </Box>
           </Stack>
           <Stack className={"order-right-2"}>
