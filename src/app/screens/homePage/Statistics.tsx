@@ -28,5 +28,6 @@ export default function Statistics() {
           </Stack>
         </Stack>
       </Container>
-    </div>);
+    </div>
+  );
 }

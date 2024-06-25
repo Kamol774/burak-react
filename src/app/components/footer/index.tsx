@@ -7,7 +7,7 @@ const Footers = styled.div`
   width: 100%;
   height: 590px;
   display: flex;
-  background: #343434;
+  background: #067a75;
   background-size: cover;
 `;
 
@@ -20,12 +20,14 @@ export default function Footer() {
         <Stack flexDirection={"row"} sx={{ mt: "94px" }}>
           <Stack flexDirection={"column"} style={{ width: "340px" }}>
             <Box>
-              <img width={"100px"} src={"/icons/burak.svg"} />
+              <img width={"200px"} src={"/icons/kashtan1.png"} />
             </Box>
             <Box className={"foot-desc-txt"}>
-              Focusing on the gourmet Turkish breakfast as well as the youth
-              society, CZN Burak Gurme aims to bring Turkish cuisine back. CZN
-              Burak Gurme creates an illusion with its cuisine.
+              From its cozy ambiance to the tantalizing aroma of freshly
+              prepared dishes, “Kashtan” invites diners to savor a delightful
+              fusion of local and international cuisine. Whether you’re seeking
+              a romantic dinner or a celebratory feast, this restaurant promises
+              an unforgettable gastronomic experience. 🍽️✨
             </Box>
             <Box className="sns-context">
               <img src={"/icons/facebook.svg"} />
@@ -56,19 +58,19 @@ export default function Footer() {
                   justifyContent={"space-between"}
                 >
                   <Box flexDirection={"row"} className={"find-us"}>
-                    <span>L.</span>
-                    <div>Downtown, Dubai</div>
+                    <span>Address:</span>
+                    <div>Downtown, Korea</div>
                   </Box>
                   <Box className={"find-us"}>
-                    <span>P.</span>
-                    <div>+971 4 554 7777</div>
+                    <span>Tel:</span>
+                    <div>+99888 246 7774</div>
                   </Box>
                   <Box className={"find-us"}>
-                    <span>E.</span>
-                    <div>devexuz@gmail.com</div>
+                    <span>Email:</span>
+                    <div>x.k.1993@mail.ru</div>
                   </Box>
                   <Box className={"find-us"}>
-                    <span>H.</span>
+                    <span>Working hours:</span>
                     <div>Visit 24 hours</div>
                   </Box>
                 </Box>

@@ -10,11 +10,10 @@ import { retrieveTopUsers } from "./selector";
 import { serverApi } from "../../../lib/config";
 import { Member } from "../../../lib/types/member";
 
-
 /** REDUX SLICE & SELECTOR **/
-const TopUsersRetriever = createSelector(retrieveTopUsers, (topUsers) => ({ topUsers })
-);
-
+const TopUsersRetriever = createSelector(retrieveTopUsers, (topUsers) => ({
+  topUsers,
+}));
 
 export default function ActiveUsers() {
   const { topUsers } = useSelector(TopUsersRetriever); // Selector: Store dan => Data ni qabul qilib olish

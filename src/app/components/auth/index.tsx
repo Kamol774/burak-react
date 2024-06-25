@@ -11,7 +11,10 @@ import { Message } from "@mui/icons-material";
 import { Messages } from "../../../lib/config";
 import { LoginInput, MemberInput } from "../../../lib/types/member";
 import MemberService from "../../services/MemberService";
-import { sweetErrorHandling, sweetTopSuccessAlert } from "../../../lib/sweetAlert";
+import {
+  sweetErrorHandling,
+  sweetTopSuccessAlert,
+} from "../../../lib/sweetAlert";
 import { useGlobals } from "../../hooks/useGlobals";
 
 const useStyles = makeStyles((theme) => ({
@@ -33,8 +36,9 @@ const ModalImg = styled.img`
   height: 100%;
   border-radius: 10px;
   background: #000;
-  margin-top: 9px;
-  margin-left: 10px;
+  margin-top: 40px;
+  margin-left: 20px;
+  margin-right: -40px;
 `;
 
 interface AuthenticationModalProps {
@@ -50,7 +54,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
   const [memberNick, setMemberNick] = useState<string>("");
   const [memberPhone, setMemberPhone] = useState<string>("");
   const [memberPassword, setMemberPassword] = useState<string>("");
-  const { setAuthMember } = useGlobals()
+  const { setAuthMember } = useGlobals();
 
   /** HANDLERS **/
   const handleUsername = (e: T) => {
@@ -73,10 +77,10 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
     }
   };
 
-
   const handleSignupRequest = async () => {
     try {
-      const isFullfill = memberNick !== "" && memberPhone !== "" && memberPassword !== "";
+      const isFullfill =
+        memberNick !== "" && memberPhone !== "" && memberPassword !== "";
       if (!isFullfill) throw new Error(Messages.error3);
       sweetErrorHandling(Messages.error3).then();
 
@@ -92,11 +96,11 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
       setAuthMember(result);
       handleSignupClose();
     } catch (err) {
-      console.log(err)
+      console.log(err);
       handleSignupClose();
       sweetErrorHandling(err).then();
     }
-  }
+  };
 
   const handleLoginRequest = async () => {
     try {
@@ -114,11 +118,11 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
       setAuthMember(result);
       handleLoginClose();
     } catch (err) {
-      console.log(err)
+      console.log(err);
       handleLoginClose();
       sweetErrorHandling(err).then();
     }
-  }
+  };
 
   return (
     <div>
@@ -141,7 +145,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
             sx={{ width: "800px" }}
           >
             <ModalImg src={"/img/auth.webp"} alt="camera" />
-            <Stack sx={{ marginLeft: "69px", alignItems: "center" }}>
+            <Stack sx={{ marginLeft: "29px", alignItems: "center" }}>
               <h2>Signup Form</h2>
               <TextField
                 sx={{ marginTop: "7px" }}
@@ -165,7 +169,12 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                 onKeyDown={handlePasswordKeyDown}
               />
               <Fab
-                sx={{ marginTop: "30px", width: "120px" }}
+                sx={{
+                  marginTop: "30px",
+                  width: "120px",
+                  background: "#1b4142",
+                  color: "#fff",
+                }}
                 variant="extended"
                 color="primary"
                 onClick={handleSignupRequest}
@@ -209,11 +218,11 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                 id="outlined-basic"
                 label="username"
                 variant="outlined"
-                sx={{ my: "10px" }}
+                sx={{ my: "10px", color: "#1b4142" }}
                 onChange={handleUsername}
               />
               <TextField
-                id={"outlined-basic"}
+                id={"outlined-basic1"}
                 label={"password"}
                 variant={"outlined"}
                 type={"password"}
@@ -221,7 +230,12 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                 onKeyDown={handlePasswordKeyDown}
               />
               <Fab
-                sx={{ marginTop: "27px", width: "120px" }}
+                sx={{
+                  marginTop: "27px",
+                  width: "120px",
+                  background: "#1b4142",
+                  color: "#fff",
+                }}
                 variant={"extended"}
                 color={"primary"}
                 onClick={handleLoginRequest}

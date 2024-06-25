@@ -1,7 +1,7 @@
 import { MemberStatus, MemberType } from "../enum/member.enum";
 
 export interface Member {
-  _id: string;  // string ni mongoose dan import qilamiz
+  _id: string; // string ni mongoose dan import qilamiz
   memberType: MemberType;
   memberStatus: MemberStatus;
   memberNick: string;

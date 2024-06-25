@@ -15,11 +15,10 @@ import { Product } from "../../../lib/types/product";
 import { serverApi } from "../../../lib/config";
 import { ProductCollection } from "../../../lib/enum/product.enum";
 
-
 /** REDUX SLICE & SELECTOR **/
-const NewDishesRetriever = createSelector(retrieveNewDishes, (newDishes) => ({ newDishes })
-);
-
+const NewDishesRetriever = createSelector(retrieveNewDishes, (newDishes) => ({
+  newDishes,
+}));
 
 export default function NewDishes() {
   const { newDishes } = useSelector(NewDishesRetriever); // Selector: Store dan => Data ni qabul qilib olish
@@ -33,7 +32,10 @@ export default function NewDishes() {
               {newDishes.length !== 0 ? (
                 newDishes.map((ele: Product) => {
                   const imagePath = `${serverApi}/${ele.productImages[0]}`;
-                  const sizeVolume = ele.productCollection === ProductCollection.DRINK ? ele.productVolume + " litre" : ele.productSize + "size";
+                  const sizeVolume =
+                    ele.productCollection === ProductCollection.DRINK
+                      ? ele.productVolume + " litre"
+                      : ele.productSize + "size";
                   return (
                     <Card key={ele._id} variant="outlined" className={"card"}>
                       <CardOverflow>
@@ -49,7 +51,9 @@ export default function NewDishes() {
                               {ele.productName}
                             </Typography>
                             <Divider width="2" height="24" bg="#d9d9d9" />
-                            <Typography className={"price"}>${ele.productPrice}</Typography>
+                            <Typography className={"price"}>
+                              ${ele.productPrice}
+                            </Typography>
                           </Stack>
                           <Stack>
                             <Typography className={"views"}>

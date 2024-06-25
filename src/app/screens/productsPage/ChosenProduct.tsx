@@ -27,12 +27,17 @@ const actionDispatch = (dispatch: Dispatch) => ({
   setChosenProduct: (data: Product) => dispatch(setChosenProduct(data)),
   setRestaurant: (data: Member) => dispatch(setRestaurant(data)),
 });
-const ChosenProductRetriever = createSelector(retrieveChosenProduct, (chosenProduct) => ({ chosenProduct })
+const ChosenProductRetriever = createSelector(
+  retrieveChosenProduct,
+  (chosenProduct) => ({ chosenProduct })
 );
-const RestaurantRetriever = createSelector(retrieveRestaurant, (restaurant) => ({ restaurant })
+const RestaurantRetriever = createSelector(
+  retrieveRestaurant,
+  (restaurant) => ({ restaurant })
 );
 
-interface ChosenProductsProps { //props ni parent dan olib kelish uchun mantiq
+interface ChosenProductsProps {
+  //props ni parent dan olib kelish uchun mantiq
   onAdd: (item: CartItem) => void;
 }
 export default function ChosenProduct(props: ChosenProductsProps) {
@@ -46,15 +51,15 @@ export default function ChosenProduct(props: ChosenProductsProps) {
     const product = new ProductService();
     product
       .getProduct(productId)
-      .then(data => setChosenProduct(data)) // backend dan qabul qilgan data ni argument sifatida paste qilyapmiz
-      .catch(err => console.log(err));
+      .then((data) => setChosenProduct(data)) // backend dan qabul qilgan data ni argument sifatida paste qilyapmiz
+      .catch((err) => console.log(err));
 
     const member = new MemberService();
     member
       .getRestaurant()
-      .then(data => setRestaurant(data)) // backend dan qabul qilgan data ni argument sifatida paste qilyapmiz
-      .catch(err => console.log(err));
-  }, [])
+      .then((data) => setRestaurant(data)) // backend dan qabul qilgan data ni argument sifatida paste qilyapmiz
+      .catch((err) => console.log(err));
+  }, []);
 
   if (!chosenProduct) return null;
   return (
@@ -69,21 +74,21 @@ export default function ChosenProduct(props: ChosenProductsProps) {
             modules={[FreeMode, Navigation, Thumbs]}
             className="swiper-area"
           >
-            {chosenProduct?.productImages.map(
-              (ele: string, index: number) => {
-                const imagePath = `${serverApi}/${ele}`;
-                return (
-                  <SwiperSlide key={index}>
-                    <img className="slider-image" src={imagePath} />
-                  </SwiperSlide>
-                );
-              }
-            )}
+            {chosenProduct?.productImages.map((ele: string, index: number) => {
+              const imagePath = `${serverApi}/${ele}`;
+              return (
+                <SwiperSlide key={index}>
+                  <img className="slider-image" src={imagePath} />
+                </SwiperSlide>
+              );
+            })}
           </Swiper>
         </Stack>
         <Stack className={"chosen-product-info"}>
           <Box className={"info-box"}>
-            <strong className={"product-name"}>{chosenProduct?.productName}</strong>
+            <strong className={"product-name"}>
+              {chosenProduct?.productName}
+            </strong>
             <span className={"resto-name"}>{restaurant?.memberNick}</span>
             <span className={"resto-name"}>{restaurant?.memberPhone}</span>
             <Box className={"rating-box"}>
@@ -95,14 +100,19 @@ export default function ChosenProduct(props: ChosenProductsProps) {
                 </div>
               </div>
             </Box>
-            <p className={"product-desc"}>{chosenProduct?.productDesc ? chosenProduct?.productDesc : "No Description"}</p>
+            <p className={"product-desc"}>
+              {chosenProduct?.productDesc
+                ? chosenProduct?.productDesc
+                : "No Description"}
+            </p>
             <Divider height="1" width="100%" bg="#000000" />
             <div className={"product-price"}>
               <span>Price:</span>
               <span>$ {chosenProduct?.productPrice}</span>
             </div>
             <div className={"button-box"}>
-              <Button variant="contained"
+              <Button
+                variant="contained"
                 onClick={(e) => {
                   onAdd({
                     _id: chosenProduct._id,
@@ -110,10 +120,12 @@ export default function ChosenProduct(props: ChosenProductsProps) {
                     name: chosenProduct.productName,
                     price: chosenProduct.productPrice,
                     image: chosenProduct.productImages[0],
-                  })
+                  });
                   e.stopPropagation();
                 }}
-              >Add To Basket</Button>
+              >
+                Add To Basket
+              </Button>
             </div>
           </Box>
         </Stack>

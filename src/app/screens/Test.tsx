@@ -1,6 +1,5 @@
 // @ts-nocheck
-import React, { Component } from 'react';
-
+import React, { Component } from "react";
 
 class Test extends React.Component {
   constructor(props) {
@@ -9,11 +8,16 @@ class Test extends React.Component {
       brand: "Ford",
       model: "Mustang",
       color: "red",
-      year: 1964
+      year: 1964,
     };
   }
   changeDetails = () => {
-    this.setState({ color: "blue", brand: "Tesla", model: "Model S", year: "2023" });
+    this.setState({
+      color: "blue",
+      brand: "Tesla",
+      model: "Model S",
+      year: "2023",
+    });
   };
 
   componentDidMount() {
@@ -23,25 +27,25 @@ class Test extends React.Component {
 
   componentWillUnmount() {
     console.log("componentWillUnmount");
-    // runs before component unmount 
+    // runs before component unmount
   }
 
   componentDidUpdate() {
     console.log("componentDidUpdate");
   }
-  // runs  
+  // runs
 
   render() {
     return (
       <div>
         <h1>My {this.state.brand}</h1>
         <p>
-          It is a {this.state.color} - {this.state.model} - from {this.state.year}.
+          It is a {this.state.color} - {this.state.model} - from{" "}
+          {this.state.year}.
         </p>
-        <button
-          type="button"
-          onClick={this.changeDetails}
-        >Change Car Details</button>
+        <button type="button" onClick={this.changeDetails}>
+          Change Car Details
+        </button>
       </div>
     );
   }

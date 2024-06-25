@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 
 .products-page {
   position: relative;
@@ -9,14 +9,12 @@
 }
 
 .products-page .products {
-
   width: 100%;
   height: auto;
   display: flex;
   background: #f8f8ff;
   display: flex;
   flex-direction: column;
-
 }
 
 .products-page .products .MuiContainer-root {
@@ -76,8 +74,8 @@
   width: 106px;
   height: 40px;
   border-radius: 18.5px;
-  background: rgb(52, 52, 52);
-  color: rgb(215, 181, 134);
+  background: #1b4142;
+  color: #b8f2d8;
   font-family: Quicksand;
   font-size: 15px;
   font-weight: 700;
@@ -160,10 +158,9 @@
   color: #e3c08d;
 }
 
-
 .products-page .products .product-wrapper .product-desc .product-title {
   margin-top: 10px;
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
@@ -178,7 +175,6 @@
   border-radius: 0px 50px 0px 0px;
 }
 
-
 .products-page .products .product-wrapper .product-card {
   margin-top: 40px;
   margin-right: 34px;
@@ -188,7 +184,6 @@
   flex-direction: column;
   align-items: center;
 }
-
 
 .products-page .products .product-wrapper .product-img .product-sale {
   margin: 10px;
@@ -214,7 +209,6 @@
   cursor: pointer;
 }
 
-
 .products-page .products .product-wrapper .product-desc .product-desc {
   margin-top: 2px;
   font-family: "Poppins";
@@ -222,17 +216,16 @@
   font-weight: 600;
   font-size: 24px;
   line-height: 36px;
-  color: #e3c08d;
+  color: #f702f7;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-
 .products-page .products .product-wrapper .product-img::before {
   border-radius: 0px 50px 0px 0px;
-  content: '';
+  content: "";
   opacity: 0;
   transition: opacity 0.5s ease;
   position: absolute;
@@ -322,14 +315,25 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgb(13, 21, 24);
+  background: linear-gradient(
+    45deg,
+    rgb(236, 123, 123),
+    rgb(228, 189, 117),
+    rgb(226, 226, 121),
+    rgb(128, 223, 128),
+    rgb(112, 112, 229),
+    rgb(176, 109, 224),
+    violet,
+    rgb(234, 109, 109)
+  );
+
   width: 100%;
   height: auto;
   margin: 53px 0 80px 0;
 }
 
 .products-page .products .brands-logo .brand-title {
-  color: rgb(227, 192, 141);
+  color: #ffffff;
   font-family: Roboto;
   font-size: 36px;
   font-weight: 700;
@@ -339,14 +343,12 @@
   margin: 84px 0 54px 0;
 }
 
-
 .products-page .products .brands-logo .image-container {
   width: 1293px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  background: rgb(13, 21, 24);
   margin-bottom: 91px;
 }
 
@@ -354,11 +356,15 @@
   width: 238.87px;
   height: 330px;
   border-radius: 20px;
-
-  box-shadow: 0px 0px 22px 0px rgb(228, 212, 212);
+  box-shadow: 0px 0px 42px 0px rgb(50, 36, 36);
   background: rgb(13, 21, 24);
 }
 
+.products-page .products .brands-logo .image-wrapper img {
+  display: flex;
+  height: 330px;
+  border-radius: 15px;
+}
 .products-page .products .address {
   width: 100%;
 }
@@ -388,7 +394,6 @@
   margin-bottom: 60px;
 }
 
-
 /** ChosenProduct **/
 
 .products-page .chosen-product {
@@ -413,7 +418,8 @@
   width: 48%;
   height: 480px;
   background: #ffffff;
-  box-shadow: 9px 13px 14px 5px rgba(0, 0, 0, 0.25),
+  box-shadow:
+    9px 13px 14px 5px rgba(0, 0, 0, 0.25),
     inset -1px 2px 10px 3px rgba(0, 0, 0, 0.25);
   border-radius: 16px;
   overflow: hidden;
@@ -426,7 +432,11 @@
   height: 1020px;
 }
 
-.products-page .chosen-product .chosen-product-slider .swiper-area .slider-image {
+.products-page
+  .chosen-product
+  .chosen-product-slider
+  .swiper-area
+  .slider-image {
   width: 100%;
   height: 100%;
 }
@@ -437,7 +447,8 @@
   height: 480px;
   display: flex;
   background: #ffffff;
-  box-shadow: 9px 13px 14px 5px rgba(0, 0, 0, 0.25),
+  box-shadow:
+    9px 13px 14px 5px rgba(0, 0, 0, 0.25),
     inset -1px 2px 10px 3px rgba(0, 0, 0, 0.25);
   border-radius: 16px;
 }

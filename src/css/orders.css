@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 
 .order-page {
   width: 100%;
@@ -11,7 +10,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 40px;
+  background: #fff;
 }
 
 .order-page .order-container .MuiTabs-flexContainer {
@@ -32,8 +31,9 @@
   width: 49%;
   height: 480px;
   display: flex;
-  background: #f6f2ff;
-  box-shadow: 9px 13px 14px 5px rgba(0, 0, 0, 0.25),
+  background: #4c00ff;
+  box-shadow:
+    9px 13px 14px 5px rgba(0, 0, 0, 0.25),
     inset 0px 0px 19px 9px rgba(0, 0, 0, 0.25);
   border-radius: 16px;
 }
@@ -44,7 +44,8 @@
   padding: 30px 40px;
   display: flex;
   background: #f6f2ff;
-  box-shadow: -15px 17px 14px 5px rgba(0, 0, 0, 0.25),
+  box-shadow:
+    -15px 17px 14px 5px rgba(0, 0, 0, 0.25),
     inset 0px 0px 19px 9px rgba(0, 0, 0, 0.25);
   border-radius: 16px;
   flex-direction: column;
@@ -60,21 +61,32 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
   margin-bottom: -15px;
 }
 
-.order-page .order-left .order-main-box .order-box-scroll .orders-name-price .price-box {
+.order-page
+  .order-left
+  .order-main-box
+  .order-box-scroll
+  .orders-name-price
+  .price-box {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-left: 300px;
 }
 
-.order-page .order-left .order-main-box .order-box-scroll .orders-name-price .price-box img {
+.order-page
+  .order-left
+  .order-main-box
+  .order-box-scroll
+  .orders-name-price
+  .price-box
+  img {
   width: 20px;
   margin: 0 15px;
 }
@@ -91,7 +103,7 @@
 .order-page .order-left .order-main-box .total-price-box .box-total p {
   margin: 0 10px;
   font-size: 14px;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-style: normal;
   font-weight: 700;
 }
@@ -121,7 +133,7 @@ Button {
 
 .order-page .order-left .order-main-box .title-dish {
   margin-left: 20px;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-style: normal;
   font-weight: 700;
   font-size: 23px;
@@ -136,7 +148,6 @@ Button {
 .order-page .order-left .order-main-box .total-price-box .data-button {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
 }
 
@@ -151,7 +162,8 @@ Button {
   height: 310px;
   display: flex;
   background: #f6f2ff;
-  box-shadow: 9px 13px 14px 5px rgba(0, 0, 0, 0.25),
+  box-shadow:
+    9px 13px 14px 5px rgba(0, 0, 0, 0.25),
     inset 0px 0px 19px 9px rgba(0, 0, 0, 0.25);
   border-radius: 16px;
   flex-direction: column;
@@ -170,7 +182,12 @@ Button {
   border-radius: 35px;
 }
 
-.order-page .order-container .order-right .order-info-box .order-user-img .order-user-avatar {
+.order-page
+  .order-container
+  .order-right
+  .order-info-box
+  .order-user-img
+  .order-user-avatar {
   width: 125px;
   height: 125px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -179,8 +196,8 @@ Button {
 
 .order-page .order-container .order-right .order-info-box .order-user-icon-box {
   position: relative;
-  right: -80%;
-  top: -22%;
+  right: -75%;
+  top: -28%;
   display: flex;
   justify-content: right;
   padding: 5px;
@@ -201,18 +218,17 @@ Button {
   display: flex;
   justify-content: center;
   margin-top: 10px;
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
   line-height: 30px;
 }
 
-
 .order-page .order-container .order-right .order-info-box .user-title-desc {
   display: flex;
   justify-content: center;
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
@@ -240,7 +256,8 @@ Button {
   height: 260px;
   display: flex;
   background: #f6f2ff;
-  box-shadow: 9px 13px 14px 5px rgba(0, 0, 0, 0.25),
+  box-shadow:
+    9px 13px 14px 5px rgba(0, 0, 0, 0.25),
     inset 0px 0px 19px 9px rgba(0, 0, 0, 0.25);
   border-radius: 16px;
   flex-direction: column;

@@ -1,6 +1,11 @@
 import axios from "axios";
 import { serverApi } from "../../lib/config";
-import { LoginInput, Member, MemberInput, MemberUpdateInput } from "../../lib/types/member";
+import {
+  LoginInput,
+  Member,
+  MemberInput,
+  MemberUpdateInput,
+} from "../../lib/types/member";
 
 class MemberService {
   private readonly path: string;
@@ -20,7 +25,7 @@ class MemberService {
       console.log("error, getTopUsers:", err);
       throw err;
     }
-  };
+  }
 
   public async getRestaurant(): Promise<Member> {
     try {
@@ -34,7 +39,7 @@ class MemberService {
       console.log("error, getRestaurant:", err);
       throw err;
     }
-  };
+  }
 
   public async signup(input: MemberInput): Promise<Member> {
     try {
@@ -48,7 +53,7 @@ class MemberService {
 
       return member;
     } catch (err) {
-      console.log("error, signup", err)
+      console.log("error, signup", err);
       throw err;
     }
   }
@@ -65,11 +70,10 @@ class MemberService {
 
       return member;
     } catch (err) {
-      console.log("error, login", err)
+      console.log("error, login", err);
       throw err;
     }
-  };
-
+  }
 
   public async logout(): Promise<void> {
     try {
@@ -79,7 +83,7 @@ class MemberService {
 
       localStorage.removeItem("memberData");
     } catch (err) {
-      console.log("error, logout", err)
+      console.log("error, logout", err);
       throw err;
     }
   }
@@ -105,10 +109,10 @@ class MemberService {
       console.log("updateMember:", result);
 
       const member: Member = result.data;
-      localStorage.setItem("memberData", JSON.stringify(member))// localstorage ni oxirgi data bn yangilab qo'yish
+      localStorage.setItem("memberData", JSON.stringify(member)); // localstorage ni oxirgi data bn yangilab qo'yish
       return member;
     } catch (err) {
-      console.log("error, signup", err)
+      console.log("error, signup", err);
       throw err;
     }
   }

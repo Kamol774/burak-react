@@ -39,15 +39,33 @@ export default function UserPage() {
                 <div className={"order-user-img"}>
                   <img
                     className={"order-user-avatar"}
-                    src={authMember?.memberImage ? `${serverApi}/${authMember?.memberImage}` : "/icons/default-user.svg"}
+                    src={
+                      authMember?.memberImage
+                        ? `${serverApi}/${authMember?.memberImage}`
+                        : "/icons/default-user.svg"
+                    }
                   />
                   <div className={"order-user-icon-box"}>
-                    <img src={authMember?.memberType === MemberType.RESTAURANT ? "/icons/restaurant.svg" : "/icons/user-badge.svg"} />
+                    <img
+                      src={
+                        authMember?.memberType === MemberType.RESTAURANT
+                          ? "/icons/restaurant.svg"
+                          : "/icons/user-badge.svg"
+                      }
+                    />
                   </div>
                 </div>
-                <span className={"order-user-name"}>{authMember?.memberNick}</span>
-                <span className={"order-user-prof"}>{authMember?.memberType}</span>
-                <span className={"order-user-prof"}>{authMember?.memberAddress ? authMember?.memberAddress : "no address"}</span>
+                <span className={"order-user-name"}>
+                  {authMember?.memberNick}
+                </span>
+                <span className={"order-user-prof"}>
+                  {authMember?.memberType}
+                </span>
+                <span className={"order-user-prof"}>
+                  {authMember?.memberAddress
+                    ? authMember?.memberAddress
+                    : "no address"}
+                </span>
               </Box>
               <Box className={"user-media-box"}>
                 <FacebookIcon />
@@ -55,7 +73,11 @@ export default function UserPage() {
                 <TelegramIcon />
                 <YouTubeIcon />
               </Box>
-              <p className={"user-desc"}>{authMember?.memberDesc ? authMember?.memberDesc : "no description"}</p>
+              <p className={"user-desc"}>
+                {authMember?.memberDesc
+                  ? authMember?.memberDesc
+                  : "no description"}
+              </p>
             </Box>
           </Stack>
         </Stack>

@@ -8,7 +8,9 @@ interface GlobalInterface {
   setOrderBuilder: (input: Date) => void;
 }
 
-export const GlobalContext = createContext<GlobalInterface | undefined>(undefined);
+export const GlobalContext = createContext<GlobalInterface | undefined>(
+  undefined
+);
 
 export const useGlobals = () => {
   const context = useContext(GlobalContext);

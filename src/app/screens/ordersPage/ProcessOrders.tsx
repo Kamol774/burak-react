@@ -16,7 +16,9 @@ import OrderService from "../../services/OrderService";
 import { sweetErrorHandling } from "../../../lib/sweetAlert";
 
 /** REDUX SLICE & SELECTOR **/
-const processOrdersRetriever = createSelector(retrieveProcessOrders, (processOrders) => ({ processOrders })
+const processOrdersRetriever = createSelector(
+  retrieveProcessOrders,
+  (processOrders) => ({ processOrders })
 );
 
 interface ProcessOrdersProps {
@@ -25,7 +27,7 @@ interface ProcessOrdersProps {
 
 export default function ProcessOrders(props: ProcessOrdersProps) {
   const { setValue } = props;
-  const { processOrders } = useSelector(processOrdersRetriever)
+  const { processOrders } = useSelector(processOrdersRetriever);
   const { authMember, setOrderBuilder } = useGlobals();
 
   /* HANDLERS */
@@ -35,21 +37,22 @@ export default function ProcessOrders(props: ProcessOrdersProps) {
 
       const orderId = e.target.value;
       const input: OrderUpdateInput = {
-        orderId: orderId, orderStatus: OrderStatus.FINISH,
+        orderId: orderId,
+        orderStatus: OrderStatus.FINISH,
       };
 
       const confirmation = window.confirm("Have you received your order?");
       if (confirmation) {
-        const order = new OrderService()
+        const order = new OrderService();
         await order.updateOrder(input);
-        setValue("3") // PAUSED ORDER => PROCESS ORDER
+        setValue("3"); // PAUSED ORDER => PROCESS ORDER
         setOrderBuilder(new Date());
       }
     } catch (err) {
       console.log(err);
       sweetErrorHandling(err).then();
     }
-  }
+  };
 
   return (
     <TabPanel value={"2"}>
@@ -59,24 +62,25 @@ export default function ProcessOrders(props: ProcessOrdersProps) {
             <Box key={order._id} className={"order-main-box"}>
               <Box className={"order-box-scroll"}>
                 {order?.orderItems?.map((item: OrderItem) => {
-                  const product: Product = order.productData.filter((ele: Product) => item.productId === ele._id)[0]
-                  const imagePath = `${serverApi}/${product.productImages[0]}`
+                  const product: Product = order.productData.filter(
+                    (ele: Product) => item.productId === ele._id
+                  )[0];
+                  const imagePath = `${serverApi}/${product.productImages[0]}`;
                   return (
                     <Box key={item._id} className={"orders-name-price"}>
-                      <img
-                        src={imagePath}
-                        className={"order-dish-img"}
-                      />
+                      <img src={imagePath} className={"order-dish-img"} />
                       <p className={"title-dish"}>{product.productName}</p>
                       <Box className={"price-box"}>
                         <p>${item.itemPrice}</p>
                         <img src={"/icons/close.svg"} />
                         <p>{item.itemQuantity}</p>
                         <img src={"/icons/pause.svg"} />
-                        <p style={{ marginLeft: "15px" }}>${item.itemQuantity * item.itemPrice}</p>
+                        <p style={{ marginLeft: "15px" }}>
+                          ${item.itemQuantity * item.itemPrice}
+                        </p>
                       </Box>
                     </Box>
-                  )
+                  );
                 })}
               </Box>
 
@@ -103,24 +107,30 @@ export default function ProcessOrders(props: ProcessOrdersProps) {
                     variant="contained"
                     // color="secondary"
                     className={"verify-button"}
-                    onClick={finishOrderHandler}>
+                    onClick={finishOrderHandler}
+                  >
                     Verify to Fulfil
                   </Button>
                 </Box>
               </Box>
             </Box>
-          )
+          );
         })}
 
-        {!processOrders || processOrders.length === 0 && (
-          <Box display={"flex"} flexDirection={"row"} justifyContent={"center"}>
-            <img
-              src={"/icons/noimage-list.svg"}
-              style={{ width: 300, height: 300 }}
-            />
-          </Box>
-        )}
-      </Stack >
-    </TabPanel >
-  )
+        {!processOrders ||
+          (processOrders.length === 0 && (
+            <Box
+              display={"flex"}
+              flexDirection={"row"}
+              justifyContent={"center"}
+            >
+              <img
+                src={"/icons/noimage-list.svg"}
+                style={{ width: 300, height: 300 }}
+              />
+            </Box>
+          ))}
+      </Stack>
+    </TabPanel>
+  );
 }
