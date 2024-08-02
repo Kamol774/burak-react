@@ -8,8 +8,9 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./app/MaterialTheme";
 import { BrowserRouter as Router } from "react-router-dom";
-import "./css/index.css";
 import ContextProvider from "./app/context/ContextProvider";
+import { SocketProvider } from "./app/context/SocketContext";
+import "./css/index.css";
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
@@ -20,16 +21,18 @@ root.render(
       {" "}
       {/* redux storage */}
       <ContextProvider>
-        <ThemeProvider theme={theme}>
-          {" "}
-          {/* material UI */}
-          <CssBaseline />
-          <Router>
+        <SocketProvider>
+          <ThemeProvider theme={theme}>
             {" "}
-            {/* react routerDOM */}
-            <App />
-          </Router>
-        </ThemeProvider>
+            {/* material UI */}
+            <CssBaseline />
+            <Router>
+              {" "}
+              {/* react routerDOM */}
+              <App />
+            </Router>
+          </ThemeProvider>
+        </SocketProvider>
       </ContextProvider>
     </Provider>
   </React.StrictMode>
